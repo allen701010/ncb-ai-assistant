@@ -11,7 +11,7 @@ if "chat_history" not in st.session_state:
 # 側邊欄設定
 with st.sidebar:
     st.title("⚙️ 設定中心")
-    api_key = st.text_input("輸入 Gemini API Key", type="password")
+api_key = st.secrets["GEMINI_API_KEY"]("輸入 Gemini API Key", type="password")
     thinking_budget = st.slider("思考預算 (Thinking Budget)", 1024, 8192, 2048)
     st.markdown("---")
     st.info("本機器人已內建《實驗動物照護及使用指引》完整邏輯 [cite: 91, 111]")
@@ -93,4 +93,5 @@ if prompt := st.chat_input("您可以詢問：'3R 原則的定義？' 或 '大�
         st.error(f"連線或執行發生錯誤：{str(e)}")
 
 st.markdown("---")
+
 st.caption("⚠️ 免責聲明：本 AI 顧問內容僅供參考，不代表官方行政處分。所有動物實驗處置應以機構 IACUC 核准版本與獸醫師診斷為準 [cite: 142, 171]。")
